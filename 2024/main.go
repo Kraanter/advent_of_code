@@ -17,7 +17,7 @@ var solutions []days.Day = []days.Day{
 }
 
 func main() {
-	util.IsTestInput = true
+	util.IsTestInput = false
 	for _, day := range solutions {
 		runDay(day)
 	}
