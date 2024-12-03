@@ -5,11 +5,11 @@ import (
 	"strings"
 )
 
-var Day3 Day = Day{
-	DayNr: 3,
-}
+type Day3Solution struct{}
 
-func (d Day) First(inputLines []string) int {
+var Day3 Day3Solution = Day3Solution{}
+
+func (d Day3Solution) First(inputLines []string) int {
 	total := 0
 	for _, line := range inputLines {
 		splits := strings.Split(line, "mul(")
@@ -38,7 +38,7 @@ func (d Day) First(inputLines []string) int {
 	return total
 }
 
-func (d Day) Second(inputLines []string) int {
+func (d Day3Solution) Second(inputLines []string) int {
 	total := 0
 	do := true
 	doCount := 0
@@ -82,4 +82,8 @@ func (d Day) Second(inputLines []string) int {
 	}
 
 	return total
+}
+
+func (d Day3Solution) GetDayNumber() int {
+	return 3
 }

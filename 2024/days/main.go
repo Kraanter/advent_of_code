@@ -1,11 +1,7 @@
 package days
 
-type DaySolution interface {
+type Day interface {
+	GetDayNumber() int
 	First([]string) int
 	Second([]string) int
-}
-
-type Day struct {
-	DaySolution
-	DayNr int
 }
