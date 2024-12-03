@@ -1,18 +1,25 @@
 package util
 
 import (
-	"fmt"
-	"os"
+	"embed"
+	"strconv"
 )
 
-func ReadInput(path string) []byte {
-	bytes, err := os.ReadFile(path)
+var IsTestInput = false
+
+func ReadDayInput(day int, fileSystem embed.FS) []byte {
+	dayStr := strconv.Itoa(day)
+	testString := ""
+	if IsTestInput {
+		testString = ".test"
+	}
+	input, err := fileSystem.ReadFile("input/day" + dayStr + testString)
 	if err != nil {
-		fmt.Printf("Could not read file '%v': %v", path, err.Error())
+		println("error: " + err.Error())
 		return make([]byte, 0)
 	}
 
-	return bytes
+	return input
 }
 
 func BytesToLines(bytes []byte) []string {

@@ -1,11 +1,15 @@
-package day3
+package days
 
 import (
 	"strconv"
 	"strings"
 )
 
-func First(inputLines []string) int {
+var Day3 Day = Day{
+	DayNr: 3,
+}
+
+func (d Day) First(inputLines []string) int {
 	total := 0
 	for _, line := range inputLines {
 		splits := strings.Split(line, "mul(")
@@ -34,7 +38,7 @@ func First(inputLines []string) int {
 	return total
 }
 
-func Second(inputLines []string) int {
+func (d Day) Second(inputLines []string) int {
 	total := 0
 	do := true
 	doCount := 0
