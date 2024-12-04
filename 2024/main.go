@@ -14,10 +14,11 @@ var solutions []days.Day = []days.Day{
 	days.Day1,
 	days.Day2,
 	days.Day3,
+	days.Day4,
 }
 
 func main() {
-	util.IsTestInput = false
+	util.IsTestInput = true
 	for _, day := range solutions {
 		runDay(day)
 	}
