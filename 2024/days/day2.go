@@ -28,12 +28,12 @@ func (d Day2Solution) First(inputLines []string) int {
 				panic(1)
 			}
 			num := leftNum - rightNum
-			sign := getSign(num)
+			sign := d.getSign(num)
 			if lastValue == 0 {
 				lastValue = num
 				continue
 			}
-			if sign != getSign(lastValue) || util.AbsoluteInt(num) > 3 || num == 0 {
+			if sign != d.getSign(lastValue) || util.AbsoluteInt(num) > 3 || num == 0 {
 				lineCorrect = false
 				break
 			} else {
@@ -69,14 +69,14 @@ func (d Day2Solution) Second(inputLines []string) int {
 
 	count := 0
 	for _, numberList := range numberListList {
-		if checkSafety(numberList) {
+		if d.checkSafety(numberList) {
 			count++
 			continue
 		}
 		for i := 0; i < len(numberList); i++ {
 			listToCheck := slices.Delete(slices.Clone(numberList), i, i+1)
 
-			if checkSafety(listToCheck) {
+			if d.checkSafety(listToCheck) {
 				count++
 				break
 			}
@@ -86,16 +86,15 @@ func (d Day2Solution) Second(inputLines []string) int {
 	return count
 }
 
-func checkSafety(numbers []int) bool {
+func (d Day2Solution) checkSafety(numbers []int) bool {
 	lastDiff := 0
 	for i := 0; i < len(numbers)-1; i++ {
 		leftNum := numbers[i]
 		rightNum := numbers[i+1]
 
 		diff := leftNum - rightNum
-		sign := getSign(diff)
-		// println("diff", lastDiff, diff, sign)
-		if lastDiff != 0 && sign != getSign(lastDiff) {
+		sign := d.getSign(diff)
+		if lastDiff != 0 && sign != d.getSign(lastDiff) {
 			return false
 		}
 		if util.AbsoluteInt(diff) > 3 || diff == 0 {
@@ -112,7 +111,7 @@ func (d Day2Solution) GetDayNumber() int {
 	return 2
 }
 
-func getSign(num int) int {
+func (d Day2Solution) getSign(num int) int {
 	if num == 0 {
 		return 0
 	}
