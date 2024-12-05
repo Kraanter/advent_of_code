@@ -4,6 +4,7 @@ import (
 	"adc_2024/days"
 	"adc_2024/util"
 	"embed"
+	"flag"
 	"fmt"
 )
 
@@ -19,7 +20,9 @@ var solutions []days.Day = []days.Day{
 }
 
 func main() {
-	util.IsTestInput = false
+	realPtr := flag.Bool("real", false, "Flag to use the actual data from AoC instead of the test data")
+	flag.Parse()
+	util.IsTestInput = !*realPtr
 	for _, day := range solutions {
 		runDay(day)
 	}
