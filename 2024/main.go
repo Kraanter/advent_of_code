@@ -20,14 +20,20 @@ var solutions []days.Day = []days.Day{
 	days.Day6,
 	days.Day7,
 	days.Day8,
+	days.Day9,
 }
 
 func main() {
 	realPtr := flag.Bool("real", false, "Flag to use the actual data from AoC instead of the test data")
+	dayPtr := flag.Int("day", -1, "Day number to run")
 	flag.Parse()
 	util.IsTestInput = !*realPtr
-	for _, day := range solutions {
-		runDay(day)
+	if *dayPtr != -1 {
+		runDay(solutions[*dayPtr-1])
+	} else {
+		for _, day := range solutions {
+			runDay(day)
+		}
 	}
 }
 
