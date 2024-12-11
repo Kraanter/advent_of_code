@@ -22,6 +22,7 @@ var solutions []days.Day = []days.Day{
 	days.Day8,
 	days.Day9,
 	days.Day10,
+	days.Day11,
 }
 
 func main() {
